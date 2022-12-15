@@ -4,6 +4,12 @@
       <template #lights>
         <slot name="lights" />
       </template>
+      <template #even>
+        <slot name="even" />
+      </template>
+      <template #odd>
+        <slot name="odd" />
+      </template>
     </ChristmasTree>
 
     <!-- Render the different things -->
@@ -12,6 +18,8 @@
       <div v-for="i in size" class="relative rounded-full bg-green w-16 h-16 -m-2 flex justify-center items-center">
         <!-- Add lights to each section -->
         <slot name="lights" />
+        <slot name="odd" v-if="i % 2 === 1" />
+        <slot name="even" v-if="i % 2 === 0" />
       </div>
     </div>
   </div>
